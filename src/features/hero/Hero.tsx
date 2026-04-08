@@ -3,17 +3,17 @@ import { motion } from 'framer-motion';
 
 const Hero: React.FC = () => {
   return (
-    <div className="py-12 md:py-20 flex flex-col items-center text-center space-y-8 md:space-y-12">
+    <div className="py-8 md:py-16 flex flex-col items-center text-center space-y-6 md:space-y-10">
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="relative group mt-2 md:mt-8"
+        className="relative group mt-0 md:mt-4"
       >
-        {/* Profile Image HUD */}
-        <div className="relative w-32 h-32 md:w-48 md:h-48 p-2 md:p-3 glass-panel border-bright overflow-visible">
-          <div className="hud-corner hud-tr -top-2 -right-2 md:-top-3 md:-right-3 w-6 h-6 md:w-8 md:h-8 border-2" />
-          <div className="hud-corner hud-bl -bottom-2 -left-2 md:-bottom-3 md:-left-3 w-6 h-6 md:w-8 md:h-8 border-2" />
+        {/* Profile Image HUD - Avatar Scale */}
+        <div className="relative w-20 h-20 md:w-32 md:h-32 p-1 md:p-2 glass-panel border-bright overflow-visible">
+          <div className="hud-corner hud-tr -top-1 -right-1 md:-top-2 md:-right-2 w-4 h-4 md:w-6 md:h-6 border" />
+          <div className="hud-corner hud-bl -bottom-1 -left-1 md:-bottom-2 md:-left-2 w-4 h-4 md:w-6 md:h-6 border" />
           
           <div className="relative w-full h-full overflow-hidden rounded-sm grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out">
             <img 
@@ -27,8 +27,8 @@ const Hero: React.FC = () => {
             <div className="scan-line" />
           </div>
           
-          <div className="absolute -bottom-5 md:-bottom-8 left-1/2 -translate-x-1/2 px-4 md:px-6 py-1 md:py-1.5 bg-accent-cyan text-bg-dark txt-mono text-[8px] md:text-[10px] font-extrabold tracking-[0.2em] whitespace-nowrap shadow-[0_0_15px_var(--accent-cyan)]">
-            SYSTEM_IDENTITY: VERIFIED
+          <div className="absolute -bottom-4 md:-bottom-6 left-1/2 -translate-x-1/2 px-2 md:px-4 py-0.5 md:py-1 bg-accent-cyan text-bg-dark txt-mono text-[6px] md:text-[8px] font-extrabold tracking-[0.15em] whitespace-nowrap shadow-[0_0_10px_var(--accent-cyan)]">
+            ID: VERIFIED
           </div>
         </div>
 
