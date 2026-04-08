@@ -3,15 +3,15 @@ import { motion } from 'framer-motion';
 
 const Hero: React.FC = () => {
   return (
-    <div className="py-20 flex flex-col items-center text-center space-y-12">
+    <div className="py-12 md:py-20 flex flex-col items-center text-center space-y-8 md:space-y-12">
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="relative group mt-8"
+        className="relative group mt-2 md:mt-8"
       >
         {/* Profile Image HUD */}
-        <div className="relative w-40 h-40 md:w-56 md:h-56 p-2 md:p-3 glass-panel border-bright overflow-visible">
+        <div className="relative w-32 h-32 md:w-48 md:h-48 p-2 md:p-3 glass-panel border-bright overflow-visible">
           <div className="hud-corner hud-tr -top-2 -right-2 md:-top-3 md:-right-3 w-6 h-6 md:w-8 md:h-8 border-2" />
           <div className="hud-corner hud-bl -bottom-2 -left-2 md:-bottom-3 md:-left-3 w-6 h-6 md:w-8 md:h-8 border-2" />
           
@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
             <div className="scan-line" />
           </div>
           
-          <div className="absolute -bottom-6 md:-bottom-8 left-1/2 -translate-x-1/2 px-4 md:px-6 py-1 md:py-1.5 bg-accent-cyan text-bg-dark txt-mono text-[8px] md:text-[10px] font-extrabold tracking-[0.2em] whitespace-nowrap shadow-[0_0_15px_var(--accent-cyan)]">
+          <div className="absolute -bottom-5 md:-bottom-8 left-1/2 -translate-x-1/2 px-4 md:px-6 py-1 md:py-1.5 bg-accent-cyan text-bg-dark txt-mono text-[8px] md:text-[10px] font-extrabold tracking-[0.2em] whitespace-nowrap shadow-[0_0_15px_var(--accent-cyan)]">
             SYSTEM_IDENTITY: VERIFIED
           </div>
         </div>

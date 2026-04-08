@@ -92,7 +92,7 @@ const App: React.FC = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="px-8 md:px-16 lg:px-24 max-w-7xl mx-auto pt-12 pb-24"
           >
-            <header className="flex justify-between items-center mb-24 glass-panel p-4 px-8 border-bright">
+            <header className="flex justify-between items-center mb-12 md:mb-24 glass-panel p-4 px-8 border-bright">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 bg-accent-cyan/10 flex items-center justify-center border border-accent-cyan/30">
                   <Shield className="text-accent-cyan w-6 h-6" />
