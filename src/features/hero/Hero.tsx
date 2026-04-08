@@ -1,99 +1,93 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Activity, Terminal } from 'lucide-react';
-import { RESUME_DATA } from '../../core/constants';
 
 const Hero: React.FC = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-  };
-
   return (
-    <motion.section 
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className="flex flex-col lg:flex-row gap-16 items-center py-20"
-    >
-      <div className="flex-1 space-y-6">
-        <motion.div 
-          variants={itemVariants}
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border-primary text-accent-primary text-sm font-medium"
-        >
-          <Activity className="w-4 h-4 animate-pulse" />
-          Status: Active Deployment at Oracle
-        </motion.div>
-        
-        <motion.h1 
-          variants={itemVariants}
-          className="txt-hero"
-        >
-          Agentic <span className="text-accent-primary">Architect</span> <br />
-          & AI Systems Engineer
-        </motion.h1>
-
-        <motion.p 
-          variants={itemVariants}
-          className="txt-body text-secondary max-w-xl"
-        >
-          {RESUME_DATA.summary}
-        </motion.p>
-
-        <motion.div 
-          variants={itemVariants}
-          className="flex gap-4 pt-4"
-        >
-          <button className="px-8 py-3 bg-accent-primary text-bg-primary font-bold rounded-lg hover:shadow-[0_0_20px_rgba(88,166,255,0.4)] transition-all">
-            Initiate Mission
-          </button>
-          <button className="px-8 py-3 border border-border-primary rounded-lg hover:border-accent-primary transition-all">
-            View Logs
-          </button>
-        </motion.div>
-      </div>
-
-      <motion.div 
-        variants={itemVariants}
-        className="relative group"
+    <div className="py-20 flex flex-col items-center text-center space-y-12">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        className="relative group mt-8"
       >
-        <div className="w-80 h-96 glass-panel relative overflow-hidden flex items-center justify-center">
-          {/* Scanning Line Effect */}
-          <motion.div 
-            animate={{ top: ["0%", "100%", "0%"] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-            className="absolute left-0 right-0 h-[2px] bg-accent-primary shadow-[0_0_15px_var(--accent-primary)] z-10 opacity-50"
-          />
+        {/* Profile Image HUD */}
+        <div className="relative w-52 h-52 md:w-64 md:h-64 p-3 glass-panel border-bright overflow-visible">
+          <div className="hud-corner hud-tr -top-3 -right-3 w-8 h-8 border-2" />
+          <div className="hud-corner hud-bl -bottom-3 -left-3 w-8 h-8 border-2" />
           
-          <img 
-            src="/src/assets/profile.jpg" 
-            alt="Sahil Raj" 
-            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-80 group-hover:opacity-100"
-          />
+          <div className="relative w-full h-full overflow-hidden rounded-sm grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out">
+            <img 
+              src="profile.jpg" 
+              alt="Sahil Raj" 
+              className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
+              onError={(e) => {
+                e.currentTarget.src = 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sahil';
+              }}
+            />
+            <div className="scan-line" />
+          </div>
           
-          <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/80 to-transparent" />
+          <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-6 py-1.5 bg-accent-cyan text-bg-dark txt-mono text-[10px] font-extrabold tracking-[0.2em] whitespace-nowrap shadow-[0_0_15px_var(--accent-cyan)]">
+            SYSTEM_IDENTITY: VERIFIED
+          </div>
         </div>
-        
-        {/* Decorative Corner Accents */}
-        <div className="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-accent-primary opacity-50 group-hover:opacity-100 transition-opacity" />
-        <div className="absolute -bottom-4 -left-4 w-24 h-24 border-b-2 border-l-2 border-accent-primary opacity-50 group-hover:opacity-100 transition-opacity" />
-        
-        {/* Tech Detail Labels */}
-        <div className="absolute top-4 left-[-2rem] -rotate-90 origin-right txt-small uppercase tracking-widest opacity-30 group-hover:opacity-60">
-          Identity_Lock: Verified
+
+        {/* Decorative HUD Details */}
+        <div className="absolute -right-20 top-0 hidden xl:block opacity-60">
+          <div className="flex flex-col gap-2 items-end">
+            <div className="w-24 h-[1px] bg-accent-cyan/40" />
+            <div className="txt-mono text-[9px] text-accent-cyan uppercase">Coordinates: 12.9716° N</div>
+            <div className="txt-mono text-[9px] text-accent-cyan uppercase">Core_State: Stable</div>
+            <div className="txt-mono text-[9px] text-accent-cyan uppercase">System_Auth: Lvl_01</div>
+          </div>
         </div>
       </motion.div>
-    </motion.section>
+
+      <div className="space-y-8 max-w-4xl">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="flex items-center justify-center gap-4 text-accent-cyan"
+        >
+          <div className="w-2 h-2 rounded-full bg-accent-cyan animate-pulse shadow-[0_0_10px_var(--accent-cyan)]" />
+          <span className="txt-mono text-xs font-bold tracking-[0.25em]">STATUS: DEPLOYED_AT_ORACLE</span>
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.7, duration: 1.2 }}
+          className="txt-hero gradient-text"
+        >
+          Agentic Architect <br /> & AI Systems Engineer
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+          className="txt-body max-w-3xl mx-auto leading-relaxed text-text-dim px-4"
+        >
+          Software Developer at <span className="text-accent-blue font-semibold">Oracle</span> specializing in AI-native systems and high-scale microservices. 
+          Optimizing backend efficiency by <span className="text-white font-bold px-1 underline decoration-accent-cyan/30">60%</span> and architecting fault-tolerant Agentic AI workflows.
+        </motion.p>
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2 }}
+        className="flex flex-wrap gap-8 justify-center pt-8"
+      >
+        <a href="#projects" className="btn-primary">
+          Initiate Mission
+        </a>
+        <a href="#experience" className="btn-outline">
+          Access Logs
+        </a>
+      </motion.div>
+    </div>
   );
 };
 

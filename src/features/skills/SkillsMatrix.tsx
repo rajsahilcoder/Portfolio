@@ -14,11 +14,11 @@ const SkillsMatrix: React.FC = () => {
     <div className="py-20 space-y-12">
       <div className="flex flex-col gap-2">
         <h2 className="txt-title uppercase tracking-tighter flex items-center gap-3">
-          <Database className="text-accent-primary" />
+          <Database className="text-accent-cyan" />
           Capabilities_Matrix
         </h2>
-        <p className="txt-small uppercase tracking-widest text-muted">
-          Multi-disciplinary technical proficiency modules
+        <p className="txt-mono text-[10px] text-text-dim opacity-70">
+          Multi-disciplinary technical proficiency modules // Lvl_02_Access
         </p>
       </div>
 
@@ -32,26 +32,29 @@ const SkillsMatrix: React.FC = () => {
             viewport={{ once: true }}
             className="glass-panel p-6 space-y-6 flex flex-col"
           >
-            <div className="flex items-center gap-3 text-accent-primary">
-              {categoryIcons[group.category] || <Globe className="w-5 h-5" />}
-              <h3 className="txt-heading text-sm uppercase tracking-widest font-bold">
+            <div className="flex items-center gap-3 text-accent-cyan">
+              <div className="p-2 bg-accent-cyan/10 rounded-sm">
+                {categoryIcons[group.category] || <Globe className="w-5 h-5" />}
+              </div>
+              <h3 className="txt-mono text-xs font-bold tracking-widest">
                 {group.category}
               </h3>
             </div>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-3">
               {group.skills.map((skill, idx) => (
                 <span 
                   key={idx}
-                  className="px-3 py-1 bg-bg-tertiary border border-border-primary rounded text-xs font-mono text-secondary hover:text-accent-primary hover:border-accent-primary transition-colors cursor-default"
+                  className="px-3 py-1.5 bg-bg-secondary border border-border-main text-[11px] txt-mono text-text-dim hover:text-accent-cyan hover:border-accent-cyan transition-all cursor-default"
                 >
                   {skill}
                 </span>
               ))}
             </div>
 
-            <div className="mt-auto pt-4 border-t border-border-primary/50 text-[10px] font-mono text-muted uppercase">
-              Module_Integrity: 100%
+            <div className="mt-auto pt-4 border-t border-border-main text-[9px] txt-mono text-text-micro uppercase flex justify-between">
+              <span>Module_Integrity</span>
+              <span className="text-accent-cyan">100%</span>
             </div>
           </motion.div>
         ))}
