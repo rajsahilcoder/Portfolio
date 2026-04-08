@@ -1,0 +1,126 @@
+:root {
+  --font-family: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Color Palette - Agentic Theme */
+  --bg-primary: #0a0c10;
+  --bg-secondary: #161b22;
+  --bg-tertiary: #21262d;
+
+  --accent-primary: #58a6ff; /* Oracle Blue / Agentic Cyan */
+  --accent-secondary: #1f6feb;
+  --accent-glow: rgba(88, 166, 255, 0.15);
+
+  --text-primary: #f0f6fc;
+  --text-secondary: #8b949e;
+  --text-muted: #484f58;
+
+  --border-primary: #30363d;
+  --border-glow: rgba(88, 166, 255, 0.3);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-standard: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 8rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: rgba(22, 27, 34, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+}
+
+.glass-panel:hover {
+  border-color: var(--border-glow);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* Agentic Accents */
+.text-glow {
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.bg-glow {
+  background: radial-gradient(
+    circle at center,
+    var(--accent-glow) 0%,
+    transparent 70%
+  );
+}
+
+/* Centralized Typographic Classes */
+.txt-hero {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 800;
+}
+.txt-title {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.txt-heading {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  font-weight: 600;
+}
+.txt-body {
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+.txt-small {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
