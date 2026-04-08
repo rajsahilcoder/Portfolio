@@ -6,6 +6,7 @@ import Hero from '../features/hero/Hero';
 import About from '../features/about/About';
 import SkillsMatrix from '../features/skills/SkillsMatrix';
 import ExperienceLogs from '../features/experience/ExperienceLogs';
+import ProjectGallery from '../features/projects/ProjectGallery';
 import { ISection } from '../core/types';
 
 const App: React.FC = () => {
@@ -36,6 +37,11 @@ const App: React.FC = () => {
       id: 'experience',
       title: 'Deployment Logs',
       component: <ExperienceLogs />,
+    },
+    {
+      id: 'projects',
+      title: 'Mission Logs',
+      component: <ProjectGallery />,
     },
   ];
 
