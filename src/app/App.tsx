@@ -7,6 +7,7 @@ import About from '../features/about/About';
 import SkillsMatrix from '../features/skills/SkillsMatrix';
 import ExperienceLogs from '../features/experience/ExperienceLogs';
 import ProjectGallery from '../features/projects/ProjectGallery';
+import ContactUplink from '../features/contact/ContactUplink';
 import { ISection } from '../core/types';
 
 const App: React.FC = () => {
@@ -42,6 +43,11 @@ const App: React.FC = () => {
       id: 'projects',
       title: 'Mission Logs',
       component: <ProjectGallery />,
+    },
+    {
+      id: 'contact',
+      title: 'Secure Uplink',
+      component: <ContactUplink />,
     },
   ];
 
