@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import SectionManager from '../components/layout/SectionManager';
 import Hero from '../features/hero/Hero';
 import About from '../features/about/About';
+import SkillsMatrix from '../features/skills/SkillsMatrix';
+import ExperienceLogs from '../features/experience/ExperienceLogs';
 import { ISection } from '../core/types';
 
 const App: React.FC = () => {
@@ -24,6 +26,16 @@ const App: React.FC = () => {
       id: 'about',
       title: 'Identity Matrix',
       component: <About />,
+    },
+    {
+      id: 'skills',
+      title: 'Capabilities Matrix',
+      component: <SkillsMatrix />,
+    },
+    {
+      id: 'experience',
+      title: 'Deployment Logs',
+      component: <ExperienceLogs />,
     },
   ];
 
