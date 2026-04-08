@@ -3,6 +3,7 @@ import { Shield, Cpu } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SectionManager from '../components/layout/SectionManager';
 import Hero from '../features/hero/Hero';
+import About from '../features/about/About';
 import { ISection } from '../core/types';
 
 const App: React.FC = () => {
@@ -18,6 +19,11 @@ const App: React.FC = () => {
       id: 'hero',
       title: 'Mission Brief',
       component: <Hero />,
+    },
+    {
+      id: 'about',
+      title: 'Identity Matrix',
+      component: <About />,
     },
   ];
 
