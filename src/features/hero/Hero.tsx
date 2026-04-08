@@ -11,9 +11,9 @@ const Hero: React.FC = () => {
         className="relative group mt-8"
       >
         {/* Profile Image HUD */}
-        <div className="relative w-52 h-52 md:w-64 md:h-64 p-3 glass-panel border-bright overflow-visible">
-          <div className="hud-corner hud-tr -top-3 -right-3 w-8 h-8 border-2" />
-          <div className="hud-corner hud-bl -bottom-3 -left-3 w-8 h-8 border-2" />
+        <div className="relative w-40 h-40 md:w-56 md:h-56 p-2 md:p-3 glass-panel border-bright overflow-visible">
+          <div className="hud-corner hud-tr -top-2 -right-2 md:-top-3 md:-right-3 w-6 h-6 md:w-8 md:h-8 border-2" />
+          <div className="hud-corner hud-bl -bottom-2 -left-2 md:-bottom-3 md:-left-3 w-6 h-6 md:w-8 md:h-8 border-2" />
           
           <div className="relative w-full h-full overflow-hidden rounded-sm grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out">
             <img 
@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
             <div className="scan-line" />
           </div>
           
-          <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-6 py-1.5 bg-accent-cyan text-bg-dark txt-mono text-[10px] font-extrabold tracking-[0.2em] whitespace-nowrap shadow-[0_0_15px_var(--accent-cyan)]">
+          <div className="absolute -bottom-6 md:-bottom-8 left-1/2 -translate-x-1/2 px-4 md:px-6 py-1 md:py-1.5 bg-accent-cyan text-bg-dark txt-mono text-[8px] md:text-[10px] font-extrabold tracking-[0.2em] whitespace-nowrap shadow-[0_0_15px_var(--accent-cyan)]">
             SYSTEM_IDENTITY: VERIFIED
           </div>
         </div>

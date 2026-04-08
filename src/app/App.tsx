@@ -90,7 +90,7 @@ const App: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="px-6 max-w-7xl mx-auto pt-12 pb-24"
+            className="px-8 md:px-16 lg:px-24 max-w-7xl mx-auto pt-12 pb-24"
           >
             <header className="flex justify-between items-center mb-24 glass-panel p-4 px-8 border-bright">
               <div className="flex items-center gap-4">
