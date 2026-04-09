@@ -62,16 +62,15 @@ const App: React.FC = () => {
             </div>
           </motion.div>
         ) : (
-          <>
+          <div key="content-wrapper" className="relative w-full h-full">
             <motion.main
-              key="content"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="px-8 md:px-16 lg:px-24 max-w-7xl mx-auto pt-12 pb-24"
+              className="px-6 md:px-16 lg:px-24 max-w-7xl mx-auto pt-12 pb-24"
             >
               <header className="flex justify-between items-center mb-12 md:mb-24 glass-panel p-4 px-6 md:px-8 border-bright relative z-50">
-                <div className="flex items-center gap-3 md:gap-4">
+                <div className="flex items-center gap-3 md:gap-4 shrink-0">
                   <div className="w-8 h-8 md:w-10 md:h-10 bg-accent-cyan/10 flex items-center justify-center border border-accent-cyan/30">
                     <Shield className="text-accent-cyan w-5 h-5 md:w-6 md:h-6" />
                   </div>
@@ -81,7 +80,7 @@ const App: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Desktop Nav */}
+                {/* Desktop Nav - Correctly Hidden on Mobile via global.css xl:flex */}
                 <nav className="hidden xl:flex gap-1 md:gap-2">
                   {sections.map(s => (
                     <a key={s.id} href={`#${s.id}`} className="nav-link rounded text-[10px] md:text-xs">
@@ -90,12 +89,12 @@ const App: React.FC = () => {
                   ))}
                 </nav>
 
-                {/* Mobile Menu Trigger */}
+                {/* Mobile Menu Trigger - Visible via xl:hidden */}
                 <button 
-                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  onClick={() => setIsMobileMenuOpen(true)}
                   className="xl:hidden p-2 text-accent-cyan hover:bg-accent-cyan/10 transition-colors border border-transparent hover:border-accent-cyan/30"
                 >
-                  {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                  <Menu className="w-6 h-6" />
                 </button>
               </header>
 
@@ -112,59 +111,62 @@ const App: React.FC = () => {
               </footer>
             </motion.main>
 
-            {/* Mobile Navigation Backdrop/Overlay */}
+            {/* Mobile Navigation Overlay - POSITIONED ABSOLUTELY ON VIEWPORT */}
             <AnimatePresence>
               {isMobileMenuOpen && (
                 <motion.div
-                  initial={{ opacity: 0, x: "100%" }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: "100%" }}
-                  transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                  className="fixed inset-0 z-[100] bg-bg-dark/95 backdrop-blur-xl flex flex-col p-12 pt-32 xl:hidden"
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.1 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="fixed inset-0 z-[1001] bg-bg-dark flex flex-col p-8 md:p-12 pt-48 xl:hidden overflow-hidden"
                 >
                   <div className="absolute top-12 left-12 flex items-center gap-4 text-accent-cyan opacity-40">
                     <Terminal className="w-5 h-5" />
                     <span className="txt-mono text-xs tracking-widest uppercase">System_Navigation</span>
                   </div>
                   
-                  <nav className="flex flex-col gap-8">
+                  <nav className="flex flex-col gap-6 md:gap-10">
                     {sections.map((s, idx) => (
                       <motion.a
                         key={s.id}
                         href={`#${s.id}`}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: idx * 0.05 + 0.2 }}
-                        className="text-2xl md:text-4xl font-black uppercase tracking-tighter text-text-main hover:text-accent-cyan transition-colors flex items-center gap-4 group"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: idx * 0.1 + 0.2 }}
+                        className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-text-main hover:text-accent-cyan transition-all flex items-center gap-6 group hover:translate-x-4 duration-500"
                       >
-                        <span className="text-accent-cyan/20 group-hover:text-accent-cyan transition-colors text-sm font-mono">0{idx + 1}</span>
+                        <span className="text-accent-cyan/20 group-hover:text-accent-cyan transition-colors text-sm font-mono pt-2">0{idx + 1}</span>
                         {s.title}
                       </motion.a>
                     ))}
                   </nav>
 
-                  <div className="mt-auto pt-12 border-t border-border-main/30 flex flex-col gap-4 text-text-micro txt-mono text-[9px]">
-                    <div className="flex justify-between uppercase">
+                  <div className="mt-auto pt-12 border-t border-border-main/30 flex flex-col gap-4 text-text-micro txt-mono text-[10px]">
+                    <div className="flex justify-between uppercase tracking-widest">
                       <span>Auth_Status: Verified</span>
-                      <span className="text-accent-cyan">Active</span>
+                      <span className="text-accent-cyan animate-pulse">Active</span>
                     </div>
-                    <div className="flex justify-between uppercase">
+                    <div className="flex justify-between uppercase tracking-widest">
                       <span>Uplink_Signal: Stable</span>
                       <span>99.9%</span>
                     </div>
                   </div>
                   
+                  {/* Close button - Fixed and obvious */}
                   <button 
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="absolute top-12 right-12 p-3 bg-accent-cyan text-bg-dark rounded-full shadow-[0_0_20px_var(--accent-cyan)]"
+                    className="absolute top-10 right-10 p-4 bg-accent-cyan text-bg-dark rounded-full shadow-neon active:scale-95 transition-transform"
+                    style={{ zIndex: 1010 }}
+                    aria-label="Close menu"
                   >
-                    <X className="w-6 h-6" />
+                    <X className="w-6 h-6" strokeWidth={3} />
                   </button>
                 </motion.div>
               )}
             </AnimatePresence>
-          </>
+          </div>
         )}
       </AnimatePresence>
     </div>
